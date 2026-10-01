@@ -1,0 +1,12 @@
+{
+  "agent": "genuine",
+  "prompt": "genuine",
+  "alignment": "genuine",
+  "hallucination": "genuine",
+  "reasoning": "genuine",
+  "multimodal": "genuine",
+  "inference": "topic_only",
+  "pipeline": "frequency_only",
+  "membrane": "stable",
+  "chemical": "stable"
+}

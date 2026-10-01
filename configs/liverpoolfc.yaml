@@ -1,0 +1,54 @@
+# LiverpoolFC / SemEval-EN discovery demo
+
+project:
+  name: ecos-liverpoolfc
+  seed: 42
+  log_level: INFO
+
+paths:
+  corpus: data/raw/discovery/liverpoolfc_contexts.json
+  output_dir: data/reports/liverpoolfc
+  reports: data/reports/liverpoolfc/shift_reports.json
+
+corpus:
+  name: liverpoolfc
+  window: year
+  languages: [en]
+  min_token_freq: 1
+
+candidates:
+  top_k: 120
+  min_freq: 1
+  alpha: 0.25
+  beta: 0.35
+  gamma: 0.20
+  delta: 0.20
+
+representations:
+  backend: bag_of_words
+  max_contexts_per_term: 40
+
+shift:
+  weights:
+    context: 0.35
+    sense: 0.30
+    neighborhood: 0.20
+    temporal: 0.15
+
+controls:
+  topic_threshold: 0.35
+  source_threshold: 0.35
+  frequency_threshold: 0.50
+
+counterfactual:
+  enabled: true
+  matching: reweight
+
+calibration:
+  method: platt
+  enabled: false
+
+pipeline:
+  early_period: "2013"
+  late_period: "2017"
+  top_reports: 50

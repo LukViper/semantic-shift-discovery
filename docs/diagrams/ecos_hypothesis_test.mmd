@@ -1,0 +1,11 @@
+%%{init: {'theme': 'base', 'themeVariables': { 'primaryColor': '#eaf2f8', 'primaryTextColor': '#1a252f', 'primaryBorderColor': '#2c3e50', 'lineColor': '#2c3e50'}}}%%
+flowchart TD
+  obs[ObservedShift_S_raw] --> q{Survives topic source frequency gates?}
+  q -->|No| reject[Fragile_or_confounder_driven]
+  q -->|Yes| match[Match late strata to early margins]
+  match --> scf[Recompute_S_cf]
+  scf --> r{S_cf remains large?}
+  r -->|No| reject
+  r -->|Yes| evid[Retrieve representative contexts]
+  evid --> conf[Calibrate confidence]
+  conf --> accept[Robust semantic-shift candidate]

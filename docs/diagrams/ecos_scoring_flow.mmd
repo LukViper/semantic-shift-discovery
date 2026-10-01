@@ -1,0 +1,34 @@
+%%{init: {'theme': 'base', 'themeVariables': { 'primaryColor': '#f8f9f9', 'primaryTextColor': '#1a252f', 'primaryBorderColor': '#2c3e50', 'lineColor': '#2c3e50'}}}%%
+flowchart LR
+  subgraph cheap [Stage1_CheapFilter]
+    F[FrequencyChange]
+    D[NeighborhoodDrift]
+    V[ContextualVariability]
+    T[TemporalNovelty]
+    F --> C[CandidateScore_C_w]
+    D --> C
+    V --> C
+    T --> C
+  end
+
+  subgraph costly [Stage2_ContextualAnalysis]
+    Enc[FrozenEncoder]
+    Clust[SenseClustering]
+    Sig[Context_Sense_Neigh_Changepoint]
+    Enc --> Clust --> Sig
+  end
+
+  subgraph gate [Stage3_Falsification]
+    Top[TopicControl]
+    Src[SourceControl]
+    Frq[FrequencyControl]
+    CF[CounterfactualMatch]
+    Top --> CF
+    Src --> CF
+    Frq --> CF
+  end
+
+  C -->|top_K| Enc
+  Sig --> Top
+  CF --> ECSS[ECSS_and_Confidence]
+  ECSS --> Out[RankedShiftReports]

@@ -1,0 +1,17 @@
+# arXiv longitudinal stream settings
+corpus:
+  name: arxiv-cs-ai
+  categories: [cs.AI, cs.CL, cs.LG]
+  start_year: 2019
+  end_year: 2026
+  max_results_per_year: 200
+  window: year
+
+paths:
+  raw_dir: data/raw/arxiv
+  processed: data/processed/arxiv_cs.parquet
+
+api:
+  base_url: https://export.arxiv.org/api/query
+  page_size: 50
+  sleep_seconds: 3.0

@@ -1,0 +1,68 @@
+% IEEE-style skeleton for ECOS
+% Compile later with a full IEEE template; this is a content scaffold.
+
+\documentclass[conference]{IEEEtran}
+\usepackage{cite}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{url}
+\usepackage{hyperref}
+
+\title{Evidence-Calibrated Open-Vocabulary Discovery of Emerging Semantic Shifts in Longitudinal Text Streams}
+
+\author{
+\IEEEauthorblockN{Anonymous Authors}
+\IEEEauthorblockA{Affiliation TBD}
+}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+Lexical semantic change systems often equate embedding displacement with meaning change.
+In open-vocabulary discovery, many top-ranked candidates are distributional artifacts.
+We present ECOS, which treats semantic change as a falsifiable hypothesis that must survive
+topic/source/frequency controls, counterfactual matching, and evidence-calibrated confidence scoring.
+\end{abstract}
+
+\begin{IEEEkeywords}
+lexical semantic change, open vocabulary, counterfactual matching, calibration, longitudinal NLP
+\end{IEEEkeywords}
+
+\section{Introduction}
+% Discovery gap (EMNLP 2025). Reframe: not ``how far did the embedding move?''
+% but ``does the shift remain after controlling for confounders?''
+
+\section{Related Work}
+% Temporal LSC, instance-level UOT, explainable senses, AXOLOTL, discovery evaluation.
+
+\section{Method}
+\subsection{Candidate Discovery}
+\subsection{Contextual and Sense Signals}
+\subsection{Confounder Controls}
+\subsection{Counterfactual Verification}
+\subsection{ECSS and Calibration}
+
+\section{Experiments}
+\subsection{Standard LSC}
+\subsection{Open-Vocabulary Discovery}
+\subsection{False-Discovery Resistance}
+\subsection{Calibration}
+\subsection{Ablations}
+
+\section{Results}
+% Fill from data/reports/experiments/summary_compact.json
+
+\section{Limitations}
+Counterfactual matching addresses observable confounders only and does not establish causality.
+
+\section{Conclusion}
+ECOS converts open-vocabulary semantic-change detection into an evidence-calibrated discovery process.
+
+\bibliographystyle{IEEEtran}
+\begin{thebibliography}{00}
+\bibitem{semeval2020} SemEval-2020 Task 1: Unsupervised Lexical Semantic Change Detection.
+\end{thebibliography}
+
+\end{document}

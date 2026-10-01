@@ -1,0 +1,62 @@
+# Demo pipeline — runs fully offline on data/sample
+project:
+  name: ecos-demo
+  seed: 42
+  log_level: INFO
+
+paths:
+  corpus: data/sample/arxiv_sample.json
+  output_dir: data/reports/demo
+  reports: data/reports/demo/shift_reports.json
+
+corpus:
+  name: arxiv-cs-sample
+  window: year
+  languages: [en]
+  min_token_freq: 2
+  max_vocab: 5000
+
+candidates:
+  top_k: 50
+  alpha: 0.25
+  beta: 0.35
+  gamma: 0.20
+  delta: 0.20
+  min_freq: 2
+
+representations:
+  backend: bag_of_words  # bag_of_words | transformers (optional)
+  model_name: sentence-transformers/all-MiniLM-L6-v2
+  max_contexts_per_term: 40
+  batch_size: 16
+
+sense:
+  method: kmeans  # kmeans | hdbscan
+  n_clusters: 3
+  min_cluster_size: 2
+
+shift:
+  weights:
+    context: 0.35
+    sense: 0.30
+    neighborhood: 0.20
+    temporal: 0.15
+
+controls:
+  topic_threshold: 0.35
+  source_threshold: 0.35
+  frequency_threshold: 0.50
+
+counterfactual:
+  enabled: true
+  matching: reweight
+  n_bins: 5
+
+calibration:
+  method: platt
+  enabled: true
+
+pipeline:
+  early_period: "2020"
+  late_period: "2025"
+  top_reports: 20

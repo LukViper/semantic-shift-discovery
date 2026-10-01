@@ -1,0 +1,21 @@
+# Model / representation defaults
+encoder:
+  backend: bag_of_words
+  model_name: sentence-transformers/all-MiniLM-L6-v2
+  device: cpu
+  max_length: 128
+
+clustering:
+  method: kmeans
+  n_clusters: 3
+  random_state: 42
+
+ecss:
+  w_context: 0.30
+  w_sense: 0.25
+  w_temporal: 0.15
+  w_neighborhood: 0.15
+  w_evidence: 0.15
+  w_topic: 0.20
+  w_source: 0.15
+  w_frequency: 0.15

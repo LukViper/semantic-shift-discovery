@@ -1,0 +1,32 @@
+# Experiment suite configuration
+project:
+  name: ecos-experiments
+  seed: 42
+
+paths:
+  sample_corpus: data/sample/arxiv_sample.json
+  semeval_root: data/raw/semeval2020
+  discovery_root: data/raw/discovery
+  liverpoolfc_corpus: data/processed/liverpoolfc/liverpoolfc_sample.json
+  output_dir: data/reports/experiments
+
+discovery_datasets:
+  - liverpoolfc
+  - semeval_en
+
+baselines:
+  - static_embedding
+  - contextual_aggregate
+  - sense_cluster
+
+experiments:
+  exp1_standard_lsc: true
+  exp_discovery_benchmarks: true
+  exp2_open_vocab_discovery: true
+  exp3_false_discovery: true
+  exp4_calibration: true
+  ablations: true
+
+metrics:
+  k_values: [5, 10, 15, 20]
+  fdr_threshold: 0.5

@@ -1,0 +1,26 @@
+%%{init: {'theme': 'base', 'themeVariables': { 'primaryColor': '#eaf2f8', 'primaryTextColor': '#1a252f', 'primaryBorderColor': '#2c3e50', 'lineColor': '#2c3e50', 'secondaryColor': '#d5f5e3', 'tertiaryColor': '#fdebd0'}}}%%
+flowchart TD
+  corpus[LongitudinalCorpus] --> prep[PreprocessKeepMetadata]
+  prep --> cand[OpenVocabCandidateDiscovery]
+  cand --> embed[ContextualEmbeddings]
+  embed --> sense[SenseInduction]
+  embed --> temporal[TemporalTrajectory]
+  sense --> shift[MultiSignalShiftEngine]
+  temporal --> shift
+  shift --> controls[ConfounderControls]
+  controls --> cf[CounterfactualMatching]
+  cf --> evidence[EvidenceRetrieval]
+  evidence --> ecss[ECSSPlusCalibration]
+  ecss --> report[ShiftReport]
+  report --> dash[SemanticShiftObservatory]
+
+  subgraph validate [ValidationLayer]
+    controls
+    cf
+  end
+
+  subgraph explain [EvidenceLayer]
+    evidence
+    ecss
+    report
+  end

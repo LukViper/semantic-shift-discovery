@@ -1,0 +1,62 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "ecos"
+version = "0.1.0"
+description = "Evidence-Calibrated Open-Vocabulary Semantic Shift Detection"
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+authors = [{ name = "ECOS Research Team" }]
+keywords = [
+  "nlp",
+  "semantic-change",
+  "lexical-semantic-change",
+  "open-vocabulary",
+  "calibration",
+]
+dependencies = [
+  "numpy>=1.24",
+  "scipy>=1.10",
+  "scikit-learn>=1.3",
+  "pandas>=2.0",
+  "polars>=0.20",
+  "pyarrow>=14.0",
+  "pyyaml>=6.0",
+  "tqdm>=4.66",
+  "requests>=2.31",
+  "click>=8.1",
+  "rich>=13.0",
+  "joblib>=1.3",
+]
+
+[project.optional-dependencies]
+nlp = [
+  "torch>=2.0",
+  "transformers>=4.36",
+  "sentence-transformers>=2.2",
+  "spacy>=3.7",
+  "hdbscan>=0.8.33",
+  "umap-learn>=0.5.5",
+  "faiss-cpu>=1.7.4",
+]
+dashboard = ["streamlit>=1.28", "plotly>=5.18"]
+dev = ["pytest>=7.4", "pytest-cov>=4.1", "ruff>=0.1"]
+all = ["ecos[nlp,dashboard,dev]"]
+
+[project.scripts]
+ecos = "ecos.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["ecos*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"
