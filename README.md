@@ -68,9 +68,3 @@ python scripts/generate_figures.py
 ## Research positioning
 
 Existing lexical semantic-change systems often report distributional differences. Open-vocabulary discovery produces many false positives (EMNLP 2025). ECOS asks: **is this change actually semantic after controlling for observable confounders?**
-
-## Paper
-
-- Readable draft: [`paper/MANUSCRIPT.md`](paper/MANUSCRIPT.md)
-- LaTeX: [`paper/ieee_paper.tex`](paper/ieee_paper.tex)
-- Figures: [`paper/figures/`](paper/figures/) · Diagrams: [`docs/diagrams/`](docs/diagrams/)
